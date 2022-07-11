@@ -28,8 +28,8 @@
                     <td>{{ report.reported_by }}</td>
                     <td>{{ report.date }}</td>
                     <td>
-                        <a style="margin-right: 30px;" href="{% url 'edit-bugReport' %}">Edit</a>
-                        <a href="{% url 'delete-bugReport' %}">Remove</a>
+                        <a style="margin-right: 30px;" href="{% url 'edit-bugReport' report.id %}">Edit</a>
+                        <a href="{% url 'delete-bugReport' report.id %}">Remove</a>
                     </td>
                 </tr>
             {% endfor %}
