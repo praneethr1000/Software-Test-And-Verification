@@ -13,7 +13,7 @@ class BugReportForm(ModelForm):
             'program': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Program'}),
             'report_type': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Report Type'}),
             'severity': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Severity'}),
-            'problem_summary': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Problem Summary'}),
+            'problem_summary': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Problem Summary'}),
             'reported_by': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Reported By'}),
             'date': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Date'}),
         }
