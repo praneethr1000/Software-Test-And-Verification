@@ -7,6 +7,19 @@
 {% block content %}
     <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Bug Reports Information</h1>
 
+    <br>
+    <div class="row">
+        <div class="col">
+            <div>
+                <form method="get">
+                    {{myFilter.form}}
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+
     <table class="table table-striped">
         <thead>
             <tr>
