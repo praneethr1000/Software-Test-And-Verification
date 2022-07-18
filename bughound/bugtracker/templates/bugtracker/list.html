@@ -14,8 +14,24 @@
                 <th scope="col">Report Type</th>
                 <th scope="col">Severity</th>
                 <th scope="col">Problem Summary</th>
+                <th scope="col">Problem</th>
+                <!--TODO: 5. Update the new field here -->
                 <th scope="col">Reported By</th>
                 <th scope="col">Date</th>
+                <th scope="col">Suggested_fix</th>
+                <th scope="col">Reproducible(Yes/No)</th>
+                <th scope="col">Functional Area</th>
+                <th scope="col">Assigned To</th>
+                <th scope="col">Comments</th>
+                <th scope="col">Status</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Resolution</th>
+                <th scope="col">Resolution Version</th>
+                <th scope="col">Resolved By</th>
+                <th scope="col">Resolved Date</th>
+                <th scope="col">Tested By</th>
+                <th scope="col">Tested Date</th>
+                <th scope="col">Deferred(Yes/No)</th>
             </tr>
         </thead>
         <tbody>
@@ -25,8 +41,24 @@
                     <td>{{ report.report_type }}</td>
                     <td>{{ report.severity }}</td>
                     <td>{{ report.problem_summary }}</td>
+                    <td>{{ report.problem }}</td>
+                    <!--TODO: 4. Update the new field here -->
                     <td>{{ report.reported_by }}</td>
                     <td>{{ report.date }}</td>
+                    <td>{{ report.suggested_fix }}</td>
+                    <td>{{ report.reproducible }}</td>
+                    <td>{{ report.functional_area }}</td>
+                    <td>{{ report.assigned_to }}</td>
+                    <td>{{ report.comments }}</td>
+                    <td>{{ report.status }}</td>
+                    <td>{{ report.priority }}</td>
+                    <td>{{ report.resolution }}</td>
+                    <td>{{ report.resolution_version }}</td>
+                    <td>{{ report.resolved_by }}</td>
+                    <td>{{ report.resolved_date }}</td>
+                    <td>{{ report.tested_by }}</td>
+                    <td>{{ report.tested_date }}</td>
+                    <td>{{ report.treated_as_deferred }}</td>
                     <td>
                         <a style="margin-right: 30px;" href="{% url 'edit-bugReport' report.id %}">Edit</a>
                         <a href="{% url 'delete-bugReport' report.id %}">Remove</a>
