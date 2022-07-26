@@ -1,55 +1,55 @@
 from django.db import models
 
 program_choices = (
-    ('vscode', 'VS Code'),
-    ('pycharm', 'Pycharm'),
-    ('sublime', 'Sublime Text'),
-    ('sqlserver', 'SQL Server'),
-    ('notepad++', 'Notepad ++'),
-    ('outlook', 'Outlook'),
+    ('VS Code', 'VS Code'),
+    ('Pycharm', 'Pycharm'),
+    ('Sublime Text', 'Sublime Text'),
+    ('SQL Server', 'SQL Server'),
+    ('Notepad ++', 'Notepad ++'),
+    ('Outlook', 'Outlook'),
 )
 
 report_type = (
-    ('coding_error', 'Coding Error'),
-    ('design_issue', 'Design Issue'),
-    ('suggestion', 'Suggestion'),
-    ('documentation', 'Documentation'),
-    ('hardware', 'Hardware'),
-    ('query', 'Query'),
+    ('Coding Error', 'Coding Error'),
+    ('Design Issue', 'Design Issue'),
+    ('Suggestion', 'Suggestion'),
+    ('Documentation', 'Documentation'),
+    ('Hardware', 'Hardware'),
+    ('Query', 'Query'),
 )
 
 severity = (
-    ('mild', 'Mild'),
-    ('medium', 'Medium'),
-    ('infectious', 'Infectious'),
-    ('minor', 'Minor'),
-    ('serious', 'Serious'),
-    ('fatal', 'Fatal'),
+    ('Mild', 'Mild'),
+    ('Medium', 'Medium'),
+    ('Infectious', 'Infectious'),
+    ('Minor', 'Minor'),
+    ('Serious', 'Serious'),
+    ('Fatal', 'Fatal'),
 )
 
 reported_by = (
-    ('praneeth', 'Praneeth'),
-    ('shruthi', 'Shruthi'),
+    ('Praneeth', 'Praneeth'),
+    ('Shruthi', 'Shruthi'),
 )
 
 functional_area = (
-    ('database', 'Database'),
-    ('network', 'Network'),
-    ('application', 'Application'),
-    ('front_end', 'Front End'),
-    ('deployment', 'Deployment'),
-    ('fatal', 'Fatal'),
+    ('Database', 'Database'),
+    ('Network', 'Network'),
+    ('Application', 'Application'),
+    ('Front End', 'Front End'),
+    ('Deployment', 'Deployment'),
+    ('Fatal', 'Fatal'),
 )
 
 assigned_to = (
-    ('group', 'Group'),
-    ('manager', 'Manager'),
+    ('Group', 'Group'),
+    ('Manager', 'Manager'),
 )
 
 status = (
-    ('open', 'Open'),
-    ('closed', 'Closed'),
-    ('resolved', 'Resolved'),
+    ('Open', 'Open'),
+    ('Closed', 'Closed'),
+    ('Resolved', 'Resolved'),
 )
 
 priority = (
@@ -62,15 +62,15 @@ priority = (
 )
 
 resolution = (
-    ('pending', 'Pending'),
-    ('fixed', 'Fixed'),
-    ('irreproducible', 'Irreproducible'),
-    ('deferred', 'Deferred'),
-    ('as designed', 'As Designed'),
-    ('cannot be fixed', 'Cannot be fixed'),
-    ('withdrawn by reported', 'Withdrawn by Reporter'),
-    ('need more info', 'Need More Info'),
-    ('disagree with suggestion', 'Disagree with Suggestion'),
+    ('Pending', 'Pending'),
+    ('Fixed', 'Fixed'),
+    ('Irreproducible', 'Irreproducible'),
+    ('Deferred', 'Deferred'),
+    ('As Designed', 'As Designed'),
+    ('Cannot be fixed', 'Cannot be fixed'),
+    ('Withdrawn by Reporter', 'Withdrawn by Reporter'),
+    ('Need More Info', 'Need More Info'),
+    ('Disagree with Suggestion', 'Disagree with Suggestion'),
 )
 
 resolution_version = (
