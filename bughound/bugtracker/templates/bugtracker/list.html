@@ -47,6 +47,7 @@
                 <th scope="col">Tested By</th>
                 <th scope="col">Tested Date</th>
                 <th scope="col">Deferred(Yes/No)</th>
+                <th scope="col">Attachment</th>
             </tr>
         </thead>
         <tbody>
@@ -74,6 +75,7 @@
                     <td>{{ report.tested_by }}</td>
                     <td>{{ report.tested_date }}</td>
                     <td>{{ report.treated_as_deferred }}</td>
+                    <td>{{ report.attachment }}</td>
                     <td>
                         <a style="margin-right: 30px;" href="{% url 'edit-bugReport' report.id %}">Edit</a>
                         <a href="{% url 'delete-bugReport' report.id %}">Remove</a>

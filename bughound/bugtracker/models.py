@@ -127,6 +127,7 @@ class Bugtracker(models.Model):
     reported_by = models.CharField(max_length=20, choices=reported_by, default='praneeth')
     date = models.DateField(default='2022-07-15')
     id = models.AutoField(primary_key=True)
+    attachment = models.FileField(upload_to='documents/')
 
     def __str__(self):
         return self.program

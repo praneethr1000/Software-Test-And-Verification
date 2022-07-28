@@ -19,7 +19,7 @@ def create_bug_report(request):
     form = BugReportForm()
 
     if request.method == 'POST':
-        form = BugReportForm(request.POST)
+        form = BugReportForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('bugReport-list')
@@ -35,7 +35,7 @@ def edit_bug_report(request, pk):
     form = BugReportForm(instance=bugReport)
 
     if request.method == 'POST':
-        form = BugReportForm(request.POST, instance=bugReport)
+        form = BugReportForm(request.POST, request.FILES, instance=bugReport)
         if form.is_valid():
             form.save()
             return redirect('bugReport-list')

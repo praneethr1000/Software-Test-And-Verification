@@ -11,7 +11,7 @@ class BugReportForm(ModelForm):
                   'functional_area', 'assigned_to', 'comments', 'status', 'priority', 'resolution',
                   'resolution_version',
                   'resolved_by', 'resolved_date', 'tested_by', 'tested_date', 'treated_as_deferred', 'reported_by',
-                  'date']
+                  'date', 'attachment']
 
         widgets = {
             'program': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Program'}),
@@ -35,4 +35,5 @@ class BugReportForm(ModelForm):
             'treated_as_deferred': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Deferred (Y/N)'}),
             'reported_by': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Reported By'}),
             'date': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Date'}),
+            'attachment': forms.FileInput(attrs={'class': 'form-control'}),
         }
