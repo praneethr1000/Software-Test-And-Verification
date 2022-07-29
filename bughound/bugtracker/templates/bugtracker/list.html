@@ -25,7 +25,10 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th scope="col">Program Report Number</th>
                 <th scope="col">Program</th>
+                <th scope="col">Release</th>
+                <th scope="col">Version</th>
                 <th scope="col">Report Type</th>
                 <th scope="col">Severity</th>
                 <th scope="col">Problem Summary</th>
@@ -53,7 +56,10 @@
         <tbody>
             {% for report in bug_reports %}
                 <tr>
-                    <th scope="row">{{ report.program }}</th>
+                    <th scope="row">{{ report.id }}</th>
+                    <td>{{ report.program }}</td>
+                    <td>{{ report.release }}</td>
+                    <td>{{ report.version }}</td>
                     <td>{{ report.report_type }}</td>
                     <td>{{ report.severity }}</td>
                     <td>{{ report.problem_summary }}</td>
@@ -86,6 +92,6 @@
     </table>
 
     <div class="text-center">
-        <a href="{% url 'create-bugReport' %}"><button type="button" class="btn btn-primary">Add New Info</button></a>
+        <a href="{% url 'create-bugReport' %}"><button type="button" class="btn btn-primary">Add New Bug Report</button></a>
     </div>
 {% endblock content %}

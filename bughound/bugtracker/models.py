@@ -83,21 +83,13 @@ resolution_version = (
 )
 
 resolved_by = (
-    ('Fix immediately', 'Immediately'),
-    ('Fix as soon as possible', 'ASAP'),
-    ('Fix before next milestone', 'Before Next Milestone'),
-    ('Fix before release', 'Before Release'),
-    ('Fix if possible', 'If Possible'),
-    ('Optional', 'Optional'),
+    ('abc@bughound.com', 'abc@bughound.com'),
+    ('def@bughound.com', 'def@bughound.com'),
 )
 
 tested_by = (
-    ('Fix immediately', 'Immediately'),
-    ('Fix as soon as possible', 'ASAP'),
-    ('Fix before next milestone', 'Before Next Milestone'),
-    ('Fix before release', 'Before Release'),
-    ('Fix if possible', 'If Possible'),
-    ('Optional', 'Optional'),
+    ('abc@bughound.com', 'abc@bughound.com'),
+    ('def@bughound.com', 'def@bughound.com'),
 )
 
 
@@ -107,6 +99,8 @@ class Bugtracker(models.Model):
     report_type = models.CharField(max_length=20, choices=report_type, default='coding_error')
     severity = models.CharField(max_length=20, choices=severity, default='mild')
     problem_summary = models.TextField(default='summary')
+    release = models.CharField(max_length=20, default='rel_01')
+    version = models.CharField(max_length=20, default='1.0')
     # TODO: 1. Update the new field here
     problem = models.TextField(default='problem')
     suggested_fix = models.TextField(default='code')

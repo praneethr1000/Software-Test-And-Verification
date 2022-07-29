@@ -7,7 +7,7 @@ class BugReportForm(ModelForm):
     class Meta:
         model = Bugtracker
 
-        fields = ['program', 'report_type', 'severity', 'problem_summary', 'problem', 'suggested_fix', 'reproducible',
+        fields = ['program', 'release', 'version', 'report_type', 'severity', 'problem_summary', 'problem', 'suggested_fix', 'reproducible',
                   'functional_area', 'assigned_to', 'comments', 'status', 'priority', 'resolution',
                   'resolution_version',
                   'resolved_by', 'resolved_date', 'tested_by', 'tested_date', 'treated_as_deferred', 'reported_by',
@@ -15,6 +15,8 @@ class BugReportForm(ModelForm):
 
         widgets = {
             'program': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Program'}),
+            'release': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Release'}),
+            'version': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Version'}),
             'report_type': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Report Type'}),
             'severity': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Severity'}),
             'problem_summary': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Problem Summary'}),
