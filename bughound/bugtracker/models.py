@@ -99,6 +99,7 @@ class Bugtracker(models.Model):
     report_type = models.CharField(max_length=20, choices=report_type, default='coding_error')
     severity = models.CharField(max_length=20, choices=severity, default='mild')
     problem_summary = models.TextField(default='summary')
+    # TODO: Make these 2 as dynamic fields to update according to the program choice
     release = models.CharField(max_length=20, default='rel_01')
     version = models.CharField(max_length=20, default='1.0')
     # TODO: 1. Update the new field here
