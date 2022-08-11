@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from .area_filters import AreaFilter
 from .employee_filters import EmployeeFilter
 from .employee_model import Employee
+from .employee_resource import EmployeeResource
 from .login_form import LoginForm
 from .models import Bugtracker
 from .forms import BugReportForm
@@ -134,6 +136,15 @@ def delete_employee(request, pk):
         'program': employee,
     }
     return render(request, 'bugtracker/delete_employee.html', context)
+
+
+def export_employee(request):
+    employee_resource = EmployeeResource()
+    dataset = employee_resource.export()
+    response = HttpResponse(dataset.csv, content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="employees.csv"'
+    # return render(request, 'bugtracker/export_employee.html')
+    return response
 
 
 def add_employee(request):

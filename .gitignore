@@ -1,3 +1,5 @@
 .idea
 **/__pycache__/
 bughound/documents/*
+bughound/bugtracker/migrations/*
+bughound/db.sqlite3

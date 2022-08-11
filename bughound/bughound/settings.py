@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'bugtracker.apps.BugtrackerConfig',
     'django_filters',
     'import_export',
+    'django_reverse_admin'
 ]
 
 MIDDLEWARE = [

@@ -97,7 +97,7 @@ tested_by = (
 # Create your models here.
 class Bugtracker(models.Model):
     # TODO: Update this to pull program choices from the Program database table
-    program = models.OneToOneField(Program, null=True, on_delete=models.SET_NULL)
+    program = models.OneToOneField(Program, null=True, on_delete=models.SET_NULL, editable=True)
     # program = models.CharField(max_length=20, choices=program_choices, default='vscode')
     report_type = models.CharField(max_length=20, choices=report_type, default='coding_error')
     severity = models.CharField(max_length=20, choices=severity, default='mild')
@@ -128,4 +128,4 @@ class Bugtracker(models.Model):
     attachment = models.FileField(upload_to='documents/')
 
     def __str__(self):
-        return self.program
+        return str(self.id)
