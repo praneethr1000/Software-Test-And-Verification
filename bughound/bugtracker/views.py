@@ -1,11 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
 from .area_filters import AreaFilter
-from .area_resource import AreaResource
 from .employee_filters import EmployeeFilter
 from .employee_model import Employee
-from .employee_resource import EmployeeResource
 from .login_form import LoginForm
 from .models import Bugtracker
 from .forms import BugReportForm
@@ -16,6 +13,7 @@ from .program_form import ProgramForm
 from .area_form import AreaForm
 from .program_model import Program
 from .area_model import Area
+from django.core import serializers
 
 
 def bug_report_list(request):
@@ -140,11 +138,20 @@ def delete_employee(request, pk):
 
 
 def export_employee(request):
-    employee_resource = EmployeeResource()
-    dataset = employee_resource.export()
-    response = HttpResponse(dataset.csv, content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="employees.csv"'
+    data = Employee.objects.all()
+    L = []
+    for i in data:
+        s = str(i.id) + ' ' + str(i.user) + ' ' + str(i.loginID) + ' ' + i.level + "\n"
+        for character in s:
+            L.append(str(ord(character)))
+    response = HttpResponse(''.join(L), content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename="employees.txt"'
     # return render(request, 'bugtracker/export_employee.html')
+    # return response
+    # form = Employee.get_form()
+    # data = serializers.serialize("txt", Employee.objects.all())
+    # response = HttpResponse(data, content_type='text/txt')
+    # response['Content-Disposition'] = 'attachment; filename="areas.txt"'
     return response
 
 
@@ -261,11 +268,9 @@ def delete_area(request, pk):
 
 
 def export_area(request):
-    area_resource = AreaResource()
-    dataset = area_resource.export()
-    response = HttpResponse(dataset.csv, content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="areas.csv"'
-    # return render(request, 'bugtracker/export_employee.html')
+    data = serializers.serialize("xml", Area.objects.all())
+    response = HttpResponse(data, content_type='text/xml')
+    response['Content-Disposition'] = 'attachment; filename="areas.xml"'
     return response
 
 
