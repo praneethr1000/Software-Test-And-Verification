@@ -32,4 +32,6 @@ urlpatterns = [
     path('add/area/', views.add_area, name='add_area'),
     path('edit/area/<int:pk>', views.edit_area, name='edit-area'),
     path('delete/area/<int:pk>', views.delete_area, name='delete-area'),
+    path('export/area/', views.export_area, name='export-area'),
+
 ]

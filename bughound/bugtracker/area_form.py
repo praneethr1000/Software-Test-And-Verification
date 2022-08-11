@@ -10,6 +10,6 @@ class AreaForm(ModelForm):
         fields = ['name', 'program']
 
         widgets = {
-            'name': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Name'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}),
             'program': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Program'})
         }

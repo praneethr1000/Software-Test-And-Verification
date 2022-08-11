@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from .area_filters import AreaFilter
+from .area_resource import AreaResource
 from .employee_filters import EmployeeFilter
 from .employee_model import Employee
 from .employee_resource import EmployeeResource
@@ -258,6 +259,15 @@ def delete_area(request, pk):
         'area': area,
     }
     return render(request, 'bugtracker/delete_area.html', context)
+
+
+def export_area(request):
+    area_resource = AreaResource()
+    dataset = area_resource.export()
+    response = HttpResponse(dataset.csv, content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="areas.csv"'
+    # return render(request, 'bugtracker/export_employee.html')
+    return response
 
 
 def add_area(request):

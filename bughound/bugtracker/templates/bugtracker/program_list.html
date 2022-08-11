@@ -39,6 +39,8 @@
                     <td>{{ program.release }}</td>
                     <td>{{ program.version }}</td>
                     <td>
+<!--                        <a style="margin-right: 30px;" href="{% url 'edit-program' program.id %}">Edit</a>-->
+<!--                        <a href="{% url 'delete-program' program.id %}">Remove</a>-->
                         <a style="margin-right: 30px;" href="{% url 'edit-program' program.id %}">Edit</a>
                         <a href="{% url 'delete-program' program.id %}">Remove</a>
                     </td>

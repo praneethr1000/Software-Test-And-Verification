@@ -10,7 +10,7 @@ class EmployeeForm(ModelForm):
         fields = ['user', 'loginID', 'level']
 
         widgets = {
-            'user': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'User'}),
-            'loginID': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'LoginID'}),
+            'user': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'User'}),
+            'loginID': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'LoginID'}),
             'level': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Level'})
         }

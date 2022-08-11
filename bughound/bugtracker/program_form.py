@@ -10,8 +10,8 @@ class ProgramForm(ModelForm):
         fields = ['name', 'release', 'version']
 
         widgets = {
-            'name': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Program Name'}),
-            'release': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Release'}),
-            'version': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Version'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Program Name'}),
+            'release': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Release'}),
+            'version': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Version'}),
             # 'area': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Area'})
         }

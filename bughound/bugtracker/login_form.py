@@ -10,5 +10,5 @@ class LoginForm(ModelForm):
         fields = ['name']
 
         widgets = {
-            'name': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'name'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'name'}),
         }
