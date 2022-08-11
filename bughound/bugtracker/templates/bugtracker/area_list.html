@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Area List</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Areas Information</h1>
+
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form class="form-inline" method="get">
+                    <div class="form-group mb-2">
+                        {{myFilter.form}}
+                    </div>
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Area Number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Program</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for area in areas %}
+                <tr>
+                    <th scope="row">{{ area.id }}</th>
+                    <td>{{ area.name }}</td>
+                    <td>{{ area.program }}</td>
+                    <td>
+                        <a style="margin-right: 30px;" href="{% url 'edit-area' area.id %}">Edit</a>
+                        <a href="{% url 'delete-area' area.id %}">Remove</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <a href="{% url 'add_area' %}"><button type="button" class="btn btn-primary">Add Area</button></a>
+    </div>
+{% endblock content %}

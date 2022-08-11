@@ -6,17 +6,15 @@
 
 {% block content %}
     <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Welcome to Bughound</h1>
+    <div class="float-container">
+        <div class="float-child" align="center">
+            <a href="{% url 'employee-list' %}"><button type="button" class="btn btn-primary">Add New Employee/User</button></a>
+        </div>
+                <br style="clear:left" />
+
+        <div class="float-child" align="center">
+            <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">Login Existing User</button></a>
+        </div>
+    </div>
 <!--    <h3 style="text-align: center; padding-top: 1em; padding-bottom: 1em;"> Create, Edit and Delete Bug Reports</h3>-->
 {% endblock content %}
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Welcome to Bughound</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Welcome to Bughound</h1>-->
-<!--    <p1-->
-<!--</body>-->
-<!--</html>-->

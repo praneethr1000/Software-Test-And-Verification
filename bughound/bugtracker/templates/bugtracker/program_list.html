@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Program List</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Programs Information</h1>
+
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form class="form-inline" method="get">
+                    <div class="form-group mb-2">
+                        {{myFilter.form}}
+                    </div>
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Program Number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Release</th>
+                <th scope="col">Version</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for program in programs %}
+                <tr>
+                    <th scope="row">{{ program.id }}</th>
+                    <td>{{ program.name }}</td>
+                    <td>{{ program.release }}</td>
+                    <td>{{ program.version }}</td>
+                    <td>
+                        <a style="margin-right: 30px;" href="{% url 'edit-program' program.id %}">Edit</a>
+                        <a href="{% url 'delete-program' program.id %}">Remove</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <a href="{% url 'add_program' %}"><button type="button" class="btn btn-primary">Add Program</button></a>
+    </div>
+{% endblock content %}
