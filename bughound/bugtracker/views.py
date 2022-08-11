@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
+
 from .models import Bugtracker
 from .forms import BugReportForm
 from .filters import BugFilter
+from .employee_form import EmployeeForm
+from .program_form import ProgramForm
+from .area_form import AreaForm
 
 
 def bug_report_list(request):
@@ -57,3 +61,53 @@ def delete_bug_report(request, pk):
         'bugReport': bugReport,
     }
     return render(request, 'bugtracker/delete.html', context)
+
+
+def add_employee(request):
+    form = EmployeeForm()
+
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'bugtracker/add_employee.html', context)
+
+
+def add_program(request):
+    form = ProgramForm()
+
+    if request.method == 'POST':
+        form = ProgramForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'bugtracker/add_program.html', context)
+
+
+def add_area(request):
+    form = AreaForm()
+    if request.method == 'POST':
+        form = AreaForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'bugtracker/add_area.html', context)
+
+
+def home_page(request):
+    return render(request, 'bugtracker/homepage.html')

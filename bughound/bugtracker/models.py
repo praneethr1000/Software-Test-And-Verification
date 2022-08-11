@@ -95,15 +95,17 @@ tested_by = (
 
 # Create your models here.
 class Bugtracker(models.Model):
+    # TODO: Update this to pull program choices from the Program database table
+    # program = models.ManyToManyField(Program)
     program = models.CharField(max_length=20, choices=program_choices, default='vscode')
     report_type = models.CharField(max_length=20, choices=report_type, default='coding_error')
     severity = models.CharField(max_length=20, choices=severity, default='mild')
-    problem_summary = models.TextField(default='summary')
+    problem_summary = models.TextField(default='summary', null=False, blank=False)
     # TODO: Make these 2 as dynamic fields to update according to the program choice
     release = models.CharField(max_length=20, default='rel_01')
     version = models.CharField(max_length=20, default='1.0')
     # TODO: 1. Update the new field here
-    problem = models.TextField(default='problem')
+    problem = models.TextField(default='problem', null=False, blank=False)
     suggested_fix = models.TextField(default='code')
     reproducible = models.TextField(default='NO')
     functional_area = models.CharField(max_length=20, choices=functional_area, default='database')

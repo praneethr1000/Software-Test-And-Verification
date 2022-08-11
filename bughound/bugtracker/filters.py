@@ -8,4 +8,4 @@ class BugFilter(django_filters.FilterSet):
         fields = '__all__'
         exclude = ['problem_summary', 'problem', 'suggested_fix',
                    'reproducible', 'comments', 'resolution_version',
-                   'resolved_date', 'tested_by', 'tested_date', 'treated_as_deferred', 'attachment', 'release', 'version']
+                   'resolved_date', 'tested_by', 'tested_date', 'treated_as_deferred', 'attachment']
