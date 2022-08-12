@@ -29,7 +29,7 @@ class BugReportForm(ModelForm):
             'status': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Status'}),
             'priority': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Priority'}),
             'resolution': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Resolution'}),
-            'resolution_version': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Resolution Version'}),
+            'resolution_version': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Resolution Version'}),
             'resolved_by': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Resolved By'}),
             'resolved_date': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Resolved Date'}),
             'tested_by': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Tested By'}),

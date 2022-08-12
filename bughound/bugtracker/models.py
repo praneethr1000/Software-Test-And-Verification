@@ -1,6 +1,7 @@
 from django.db import models
-
+from .employee_model import Employee
 from .program_model import Program
+from .area_model import Area
 program_choices = (
     ('VS Code', 'VS Code'),
     ('Pycharm', 'Pycharm'),
@@ -97,35 +98,37 @@ tested_by = (
 # Create your models here.
 class Bugtracker(models.Model):
     # TODO: Update this to pull program choices from the Program database table
-    program = models.OneToOneField(Program, null=True, on_delete=models.SET_NULL, editable=True)
+    program = models.ForeignKey(Program, null=True, on_delete=models.SET_NULL, editable=True, unique=False)
     # program = models.CharField(max_length=20, choices=program_choices, default='vscode')
-    report_type = models.CharField(max_length=20, choices=report_type, default='coding_error')
-    severity = models.CharField(max_length=20, choices=severity, default='mild')
-    problem_summary = models.TextField(default='summary', null=False, blank=False)
+    report_type = models.CharField(max_length=20, choices=report_type, null=True, blank=True)
+    severity = models.CharField(max_length=20, choices=severity, null=True, blank=True)
+    problem_summary = models.TextField(null=False, blank=False)
     # TODO: Make these 2 as dynamic fields to update according to the program choice
-    release = models.CharField(max_length=20, default='1')
-    version = models.CharField(max_length=20, default='1')
+    release = models.CharField(max_length=20, null=True, blank=True)
+    version = models.CharField(max_length=20, null=True, blank=True)
     # TODO: 1. Update the new field here
-    problem = models.TextField(default='problem', null=False, blank=False)
-    suggested_fix = models.TextField(default='code')
-    reproducible = models.TextField(default='NO')
-    functional_area = models.CharField(max_length=20, choices=functional_area, default='database')
-    assigned_to = models.CharField(max_length=20, choices=assigned_to, default='default')
-    comments = models.TextField(default='comment')
-    status = models.CharField(max_length=20, choices=status, default='open')
-    priority = models.CharField(max_length=100, choices=priority, default='optional')
-    resolution = models.CharField(max_length=100, choices=resolution, default='pending')
-    resolution_version = models.CharField(max_length=100, choices=resolution_version, default='1.0')
-    resolved_by = models.CharField(max_length=100, choices=resolved_by, default='abc@bughound.com')
-    resolved_date = models.DateField(default='2022-07-15')
-    tested_by = models.CharField(max_length=100, choices=tested_by, default='abc@bughound.com')
-    tested_date = models.DateField(default='2022-07-15')
-    treated_as_deferred = models.TextField(default='NO')
+    problem = models.TextField(null=False, blank=False)
+    suggested_fix = models.TextField(null=True, blank=True)
+    reproducible = models.TextField(null=True, blank=True)
+    # functional_area = models.CharField(max_length=20, choices=functional_area)
+    functional_area = models.ForeignKey(Area, null=True, on_delete=models.SET_NULL, editable=True, blank=True)
+    assigned_to = models.ForeignKey(Employee, null=True, on_delete=models.SET_NULL, editable=True, related_name="assigned", blank=True)
+    comments = models.TextField(null=True, blank=True)
+    status = models.CharField(max_length=20, choices=status, default='Open')
+    priority = models.CharField(max_length=100, choices=priority, null=True, blank=True)
+    resolution = models.CharField(max_length=100, choices=resolution, null=True, blank=True)
+    resolution_version = models.CharField(max_length=100, null=True, blank=True)
+    resolved_by = models.ForeignKey(Employee, null=True, on_delete=models.SET_NULL, editable=True, related_name="resolved", blank=True)
+    resolved_date = models.DateField(null=True, blank=True)
+    tested_by = models.ForeignKey(Employee, null=True, on_delete=models.SET_NULL, editable=True, related_name="tested", blank=True)
+    tested_date = models.DateField(null=True, blank=True)
+    treated_as_deferred = models.TextField(null=True, blank=True)
 
-    reported_by = models.CharField(max_length=20, choices=reported_by, default='praneeth')
-    date = models.DateField(default='2022-07-15')
+    # reported_by = models.CharField(max_length=20, choices=reported_by)
+    reported_by = models.ForeignKey(Employee, null=True, on_delete=models.SET_NULL, editable=True)
+    date = models.DateField(null=True, blank=True)
     id = models.AutoField(primary_key=True)
-    attachment = models.FileField(upload_to='documents/')
+    attachment = models.FileField(upload_to='documents/', null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
