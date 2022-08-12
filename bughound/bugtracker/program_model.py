@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Program(models.Model):
-    name = models.TextField(unique=True, null=False, blank=False)
+    name = models.TextField(null=False, blank=False)
     # name = models.TextField(primary_key=True, unique=True, null=False, blank=False)
     release = models.TextField()
     version = models.TextField()

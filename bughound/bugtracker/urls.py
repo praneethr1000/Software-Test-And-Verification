@@ -34,4 +34,5 @@ urlpatterns = [
     path('delete/area/<int:pk>', views.delete_area, name='delete-area'),
     path('export/area/', views.export_area, name='export-area'),
 
+    path('document/<int:pk>', views.document, name='document')
 ]

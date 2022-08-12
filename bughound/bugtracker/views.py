@@ -18,8 +18,12 @@ from django.core import serializers
 
 def bug_report_list(request):
     bug_reports = Bugtracker.objects.all()
-    myFilter = BugFilter(request.GET, queryset=bug_reports)
+    # myFilter = BugFilter(request.GET, queryset=bug_reports)
+    data = request.GET.copy()
+    data.setdefault('status', 'Open')
+    myFilter = BugFilter(data, queryset=bug_reports)
     bug_reports = myFilter.qs
+    # bug_reports = myFilter.qs
     context = {
         'bug_reports': bug_reports,
         'myFilter': myFilter
@@ -298,3 +302,22 @@ def no_db_access_home_page(request):
 
 def start_page(request):
     return render(request, 'bugtracker/startpage.html')
+
+
+def document(request, pk):
+    bugReport = Bugtracker.objects.get(id=pk)
+    form = BugReportForm(instance=bugReport)
+
+    if request.method == 'POST':
+        form = BugReportForm(request.POST, request.FILES, instance=bugReport)
+        print(form)
+        if form.is_valid():
+            file = Bugtracker.objects.get(form.cleaned_data.get['attachment'])
+            print(file)
+            obj = form.save()
+            obj.file = file
+            f = open(obj.file, "r")
+            print(f.read())
+            # return redirect('bugReport-list')
+    # return HttpResponse(content=form.data.get('status'))
+    return HttpResponse()
